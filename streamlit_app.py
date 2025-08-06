@@ -43,14 +43,14 @@ scaler.fit(X)  # 스케일러는 학습 데이터 기준으로 fit
 # ----------------------------------------
 # 3. Streamlit UI
 # ----------------------------------------
-# st.title("붓꽃 판별기")
-# if model:
-#     st.markdown(f"불러온 모델: `{os.path.basename(latest_model_path)}`")
-# else:
-#     st.error("저장된 모델을 찾을 수 없습니다. 학습을 먼저 진행하세요.")
+st.title("붓꽃 판별기")
+if model:
+    st.markdown(f"불러온 모델: `{os.path.basename(latest_model_path)}`")
+else:
+    st.error("저장된 모델을 찾을 수 없습니다. 학습을 먼저 진행하세요.")
 
 
-# st.sidebar.header("입력값을 설정하세요")
+st.sidebar.header("입력값을 설정하세요")
 
 
 # # 사용자 입력값 (슬라이더로 30개 특성)
