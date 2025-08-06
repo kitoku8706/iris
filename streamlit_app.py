@@ -68,6 +68,36 @@ for i, feature in enumerate(feature_names):
 user_array = np.array(user_input).reshape(1, -1)
 scaled_input = scaler.transform(user_array)
 
+# ----------------------------------------
+# 4. 입력: 랜덤 샘플 선택 및 입력값 표시
+# ----------------------------------------
+st.sidebar.header("입력값 설정")
+
+
+# 초기값 설정
+if "random_sample" not in st.session_state:
+    st.session_state.random_sample = X[random.randint(0, X.shape[0] - 1)]
+
+
+# 샘플 무작위 선택 버튼
+if st.sidebar.button("샘플 랜덤 선택"):
+    st.session_state.random_sample = X[random.randint(0, X.shape[0] - 1)]
+
+
+# 현재 샘플 입력값 표시
+user_input = []
+for i, feature in enumerate(feature_names):
+    val = st.sidebar.number_input(
+        label=feature,
+        min_value=float(X[:, i].min()),
+        max_value=float(X[:, i].max()),
+        value=float(st.session_state.random_sample[i]),
+        format="%.2f",
+        key=f"feature_{i}"
+    )
+    user_input.append(val)
+
+
 
 # ----------------------------------------
 # 4. 예측 수행 (Iris에 맞게 수정)
