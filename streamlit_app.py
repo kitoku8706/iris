@@ -6,6 +6,7 @@ import os
 from sklearn.datasets import load_iris
 from sklearn.preprocessing import StandardScaler
 from tensorflow.keras.models import load_model
+import random
 
 
 # ----------------------------------------
