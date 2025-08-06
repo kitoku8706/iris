@@ -43,31 +43,31 @@ scaler.fit(X)  # 스케일러는 학습 데이터 기준으로 fit
 # ----------------------------------------
 # 3. Streamlit UI
 # ----------------------------------------
-st.title("붓꽃 판별기")
-if model:
-    st.markdown(f"불러온 모델: `{os.path.basename(latest_model_path)}`")
-else:
-    st.error("저장된 모델을 찾을 수 없습니다. 학습을 먼저 진행하세요.")
+# st.title("붓꽃 판별기")
+# if model:
+#     st.markdown(f"불러온 모델: `{os.path.basename(latest_model_path)}`")
+# else:
+#     st.error("저장된 모델을 찾을 수 없습니다. 학습을 먼저 진행하세요.")
 
 
-st.sidebar.header("입력값을 설정하세요")
+# st.sidebar.header("입력값을 설정하세요")
 
 
-# 사용자 입력값 (슬라이더로 30개 특성)
-user_input = []
-for i, feature in enumerate(feature_names):
-    val = st.sidebar.slider(
-        label=feature,
-        min_value=float(X[:, i].min()),
-        max_value=float(X[:, i].max()),
-        value=float(X[:, i].mean()),
-        format="%.2f"
-    )
-    user_input.append(val)
+# # 사용자 입력값 (슬라이더로 30개 특성)
+# user_input = []
+# for i, feature in enumerate(feature_names):
+#     val = st.sidebar.slider(
+#         label=feature,
+#         min_value=float(X[:, i].min()),
+#         max_value=float(X[:, i].max()),
+#         value=float(X[:, i].mean()),
+#         format="%.2f"
+#     )
+#     user_input.append(val)
 
 
-user_array = np.array(user_input).reshape(1, -1)
-scaled_input = scaler.transform(user_array)
+# user_array = np.array(user_input).reshape(1, -1)
+# scaled_input = scaler.transform(user_array)
 
 # ----------------------------------------
 # 4. 입력: 랜덤 샘플 선택 및 입력값 표시
